@@ -8,4 +8,4 @@ app = Flask(__name__)
 def hello_world(username = None):
     name = username
     print(username)
-    return render_template('hello_noname.html') if not name else render_template('hello1.html', name)
+    return render_template('hello_is_none.html') if not name else render_template('hello1.html', name)
