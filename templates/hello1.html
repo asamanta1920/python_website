@@ -4,7 +4,12 @@
     </head>
     <body>
         <div>
-            Hello {{name}}!
+            Hello 
+            {% if name is None %}
+                someone
+            {% else %}
+                name
+            {% endif %}
         </div>
     </body>
 </html>
