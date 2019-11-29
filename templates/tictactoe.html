@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        {% if error %}
+            <h1>{{error}}</h1>
+        {% endif %}
+        <table>
+            {% for row in state %}
+                <tr>
+                    {% for column in row %}
+                        <td>
+                            {{column}}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <form method="POST">
+            <div>
+                <h4>Choose a position : </h4>
+            </div>
+            <input type="number" name="position"/>
+            <input type="submit" value="Submit"/>
+        </form>
+        <h2>{{win}}</h2>
+    </body>
+</html>
