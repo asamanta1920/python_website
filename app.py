@@ -8,4 +8,4 @@ app = Flask(__name__)
 def hello_world(username = None):
     name = username
     print(username)
-    return render_template('hello1.html', name)
+    return render_template('hello1.html', name == name)
