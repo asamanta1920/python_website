@@ -37,6 +37,7 @@ def check_win(state):
 def game():
     global state
     global turn
+    turn_statement = "It is Player X's turn"
     error = None
     status_code = 200
 
@@ -57,10 +58,12 @@ def game():
                 state[row][column] = turn
                 if turn == "x":
                     turn = "o"
+                    turn_statement = "It is Player O's turn"
                 else:
                     turn = "x"
+                    turn_statement = "It is Player X's turn"
             else:
                 error = "Position was taken"
                 status_code = 400
     win = check_win(state)
-    return render_template('tictactoe.html', state=state, error=error, win=win), status_code
+    return render_template('tictactoe.html', state=state, error=error, win=win, turn_statement=turn_statement), status_code

@@ -1,7 +1,65 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>My Tic Tac Toe Game</title>
+        <style type="text/css">
+            @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 
+            h1{
+                color:rgb(255, 0, 221);
+                background-color:#15c4ff;
+                font-size:25px;
+                width: 220;
+                font-family:'Indie Flower',cursive;
+                text-align: left;
+                border-style: dotted;
+                border-color: #B126EE;
+            }
+            h2{
+                color:rgb(255, 0, 128);
+                background-color:rgb(130, 230, 49);
+                font-size:25px;
+                width: 220;
+                font-family:'Indie Flower',cursive;
+                text-align: left;
+                border-style: dotted;
+                border-color: #B126EE;
+            }
+
+            h4{
+                color:rgb(16, 113, 126);
+                background-color:rgb(226, 214, 104);
+                font-size:25px;
+                width: 220;
+                font-family:'Indie Flower',cursive;
+                text-align: left;
+                border-style: solid;
+                border-color: #B126EE;
+            }
+            h5{
+                color:rgb(16, 113, 126);
+                background-color:rgb(226, 214, 104);
+                font-size:25px;
+                width: 220;
+                font-family:'Indie Flower',cursive;
+                text-align: left;
+                border-style: solid;
+                border-color: #B126EE;
+            }
+
+            table{
+                color:rgb(255, 0, 0);
+                background-color:rgb(21, 255, 72);
+                font-family:'Indie Flower',cursive;
+                font-size: 70px;
+                width: 220px;
+                height: 200px;
+                text-align: center;
+                border-style: double;
+                border-color: rgb(238, 38, 178);
+            }
+
+        </style>
     </head>
     <body>
         {% if error %}
@@ -25,6 +83,7 @@
             <input type="number" name="position"/>
             <input type="submit" value="Submit"/>
         </form>
+        <h5>{{turn_statement}}</h5>
         <h2>{{win}}</h2>
     </body>
 </html>
