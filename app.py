@@ -18,15 +18,15 @@ def make_state():
 def check_win(state):
     for row in range(0,3):
         if state[row] == ["x", "x", "x"]:
-            return "x wins"
+            return "x wins! Game Over! Please don't submit anymore"
         if state[row] == ["o", "o", "o"]:
-            return "o wins"
+            return "o wins! Game Over! Please don't submit anymore"
         if state[0][row] == state[1][row] == state[2][row] != "-":
-            return state[0][row] + " wins"
+            return state[0][row] + " wins! Game Over! Please don't submit anymore"
     if state[0][0] == state[1][1] == state[2][2] != "-":
-        return state[0][0] + " wins"
+        return state[0][0] + " wins! Game Over! Please don't submit anymore"
     if state[0][2] == state[1][1] == state[2][0] != "-":
-            return state[0][2] + " wins"
+            return state[0][2] + " wins! Game Over! Please don't submit anymore"
     for row in range(0,3):
         for column in range(0,3):
             if state[row][column] == "-":
