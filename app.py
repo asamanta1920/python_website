@@ -37,7 +37,7 @@ def check_win(state):
 def game():
     global state
     global turn
-    turn_statement = "It is Player X's turn"
+    turn_statement = "It is Player x's turn"
     error = None
     status_code = 200
 
@@ -58,10 +58,10 @@ def game():
                 state[row][column] = turn
                 if turn == "x":
                     turn = "o"
-                    turn_statement = "It is Player O's turn"
+                    turn_statement = "It is Player o's turn"
                 else:
                     turn = "x"
-                    turn_statement = "It is Player X's turn"
+                    turn_statement = "It is Player x's turn"
             else:
                 error = "Position was taken"
                 status_code = 400

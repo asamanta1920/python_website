@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My restraunt</title>
+		<style type="text/css">
+			body{
+				background-image:url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/little-caesars-stuffed-pretzel-crust-pizza-1548357151.png?crop=1.00xw:0.988xh;0,0.0119xh&resize=480:*");
+				background-size:1000px 800px;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+		<h1>Welcome to Adrita's Restaurant!</h1>
+		<form action="/website/flask_diner.py">
+			<table> 
+				<tr>
+					<th>Price</th>
+					<th>Food</th>
+					<th>Type</th>
+					<th>Quantity</th>
+				</tr>
+				<tr>
+					<td>$12.00</td>
+					<td>Pizza</td>
+					<td>
+						<select name="pizza">
+							<option>Cheese</option>
+							<option>Pepperoni</option>
+							<option>Chicken</option>
+							<option>Mushroom</option>
+							<option>Bacon</option>
+							<option>Beef</option>
+							<option>None</option>
+						</select>
+					</td>
+					<td><p><input type="number"  name="pizza_num"></p></td>
+				</tr>
+				<tr>
+					<td>$4.00</td>
+					<td>Drink</td>
+					<td>
+						<select name="drink">
+							<option>Water</option>
+							<option>Lemonade</option>
+							<option>Pink Lemonade</option>
+							<option>Apple Juice</option>
+							<option>Orange Juice</option>
+							<option>Coke</option>
+							<option>None</option>
+						</select>
+					</td>
+					<td><p><input type="number"  name="drink_num"></p></td>
+				</tr>
+				<tr>
+					<td>$6.00</td>
+					<td>Dessert</td>
+					<td>
+						<select name="dessert">
+							<option>Ice Cream</option>
+							<option>Slush</option>
+							<option>Chocolate Mousse</option>
+							<option>Strawberry Short Cake</option>
+							<option>Brownie Cake</option>
+							<option>Jello</option>
+							<option>None</option>
+						</select>
+					</td>					
+					<td><p><input type="number"  name="dessert_num"></p></td>
+				</tr>
+			</table>
+			<p><label>Name for your Order : </label></p>
+			<p><input type="text"  name="name" required ></p>
+			<p><input type="submit" value="Submit"></p>	
+	</body>
+</html> 
