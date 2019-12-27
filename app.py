@@ -103,3 +103,19 @@ def signup():
             except:
                 status = "An error occured. Signup again later."
     return render_template('signup.html', status = status)
+
+@app.route('/login', methods=['GET','POST'])
+
+def login():
+    if request.method == 'GET':
+        status1 = "Please fill in all the feilds"
+    else:
+        hashed1 = bcrypt.hashpw(request.form['password'].encode("UTF-8"), bcrypt.gensalt())
+        usernames = cursor.execute("SELECT username from users")
+        passwords = cursor.execute("SELECT password from users")
+        if request.form['username'] in usernames and hashed1 in passwords:
+            status1 = "You have logged in succesfully!"
+        else:
+            status1 = "Please enter the login info again. A problem occured."
+        
+    return render_template('login.html', status1 = status1)

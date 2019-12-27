@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login!</title>
+        <style type="text/css">
+            @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+            h2{
+                color:rgb(255, 0, 128);
+                background-color:rgb(130, 230, 49);
+                font-size:25px;
+                width: 220;
+                font-family:'Indie Flower',cursive;
+                text-align: left;
+                border-style: dotted;
+                border-color: #B126EE;
+            }
+            h5{
+                color:rgb(16, 113, 126);
+                background-color:rgb(226, 214, 104);
+                font-size:25px;
+                width: 220;
+                font-family:'Indie Flower',cursive;
+                text-align: left;
+                border-style: solid;
+                border-color: #B126EE;
+            }
+        </style>
+        <form method="POST">
+            <div>
+                <h5>Username : </h5>
+            </div>
+            <input type="text" name="username"/>
+            <div>
+                <h5>Password : </h5>
+            </div>
+            <input type="password" name="password"/>
+            <input type="submit" value="Submit"/>
+        </form>
+        <h2>{{status1}}</h2>
+    </body>
+</html>
