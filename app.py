@@ -1,5 +1,23 @@
 from flask import Flask, render_template, request
+import sqlite3
+import bcrypt
 app = Flask(__name__)
+
+conn = sqlite3.connect("signup.db")
+
+cursor = conn.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS users(
+    username              TEXT          NOT NULL UNIQUE,
+    name                  TEXT          NOT NULL,
+    email                 VARCHAR(100)  NOT NULL UNIQUE, 
+    password              TEXT          NOT NULL,
+    CHECK(email LIKE '%@%.%') 
+)
+""")
+
+conn.commit()
 
 @app.route('/')
 @app.route('/hello/<username>')
@@ -67,3 +85,21 @@ def game():
                 status_code = 400
     win = check_win(state)
     return render_template('tictactoe.html', state=state, error=error, win=win, turn_statement=turn_statement), status_code
+
+@app.route('/signup', methods=['GET','POST'])
+
+def signup():
+    if request.method == 'GET':
+        status = "Please fill in all the feilds"
+    else:
+        if request.form['password'] != request.form['confirm_password']:
+            status = "Your confirmed password doesn't match you password. Please enter again."
+        else:
+            status = "Your information was filled in. Now you can log in."
+            hashed = bcrypt.hashpw(request.form['password'].encode("UTF-8"), bcrypt.gensalt())
+            try:
+                cursor.execute("INSERT INTO users (username, name, email, password) VALUES (?, ?, ?, ?)", (request.form['username'], request.form['name'],request.form['email'], hashed))
+                conn.commit()
+            except:
+                status = "An error occured. Signup again later."
+    return render_template('signup.html', status = status)
