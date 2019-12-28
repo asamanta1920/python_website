@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RSVP!</title>
+        <style type="text/css">
+            @import url('https://fonts.googleapis.com/css?family=Tangerine');
+            html{
+                background-color: #e6ffff;
+            }
+            h2{
+                color:#ff3333;
+                background-color:#669900;
+                font-size:30px;
+                width: 220;
+                font-family:'Tangerine',serif;
+                text-align: left;
+                border-style: dotted;
+                border-color: #ff66d9;
+            }
+            h5{
+                color: #004d1a;
+                background-color:#b3ecff;
+                font-size:30px;
+                width: 220;
+                font-family:'Tangerine',serif;
+                text-align: left;
+                border-style: solid;
+                border-color: #ff00ff;
+            }
+        </style>
+        <form method="POST">
+            <div>
+                <h5>Name : </h5>
+            </div>
+            <input type="text" name="name"/>
+            <div>
+                <h5>Email : </h5>
+            </div>
+            <input type="text" name="email"/>
+            <div>
+                <h5>Phone : </h5>
+            </div>
+            <input type="number" name="phone"/>
+            <div>
+                <h5>Number of Guests : </h5>
+            </div>
+            <input type="number" name="num_guests"/>
+            <input type="submit" value="Submit"/>
+        </form>
+        <h2>{{status}}</h2>
+    </body>
+</html>
