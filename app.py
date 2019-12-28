@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS users(
 """)
 
 conn.commit()
+conn.close()
 
 @app.route('/')
 @app.route('/hello/<username>')
@@ -89,6 +90,8 @@ def game():
 @app.route('/signup', methods=['GET','POST'])
 
 def signup():
+    conn = sqlite3.connect("signup.db")
+    cursor = conn.cursor()
     if request.method == 'GET':
         status = "Please fill in all the feilds"
     else:
@@ -100,22 +103,27 @@ def signup():
             try:
                 cursor.execute("INSERT INTO users (username, name, email, password) VALUES (?, ?, ?, ?)", (request.form['username'], request.form['name'],request.form['email'], hashed))
                 conn.commit()
-            except:
+            except Exception as e:
+                print(e)
                 status = "An error occured. Signup again later."
+    conn.close()
     return render_template('signup.html', status = status)
 
 @app.route('/login', methods=['GET','POST'])
 
 def login():
+    conn = sqlite3.connect("signup.db")
+    cursor = conn.cursor()
     if request.method == 'GET':
         status1 = "Please fill in all the feilds"
     else:
         hashed1 = bcrypt.hashpw(request.form['password'].encode("UTF-8"), bcrypt.gensalt())
         usernames = cursor.execute("SELECT username from users")
         passwords = cursor.execute("SELECT password from users")
-        if request.form['username'] in usernames and hashed1 in passwords:
+        if request.form['username'] in usernames.fetchall() and hashed1 in passwords.fetchall():
             status1 = "You have logged in succesfully!"
         else:
             status1 = "Please enter the login info again. A problem occured."
         
+    conn.close()
     return render_template('login.html', status1 = status1)
