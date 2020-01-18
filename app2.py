@@ -89,7 +89,9 @@ def game():
 
 @app.route('/signup', methods=['GET','POST'])
 
+
 def signup():
+    global status
     conn = sqlite3.connect("signup.db")
     cursor = conn.cursor()
     if request.method == 'GET':
@@ -112,40 +114,21 @@ def signup():
 @app.route('/login', methods=['GET','POST'])
 
 def login():
+    global status1
     conn = sqlite3.connect("signup.db")
     cursor = conn.cursor()
     if request.method == 'GET':
         status1 = "Please fill in all the feilds"
     else:
-        passes = cursor.execute("SELECT password FROM users WHERE username = ?", (request.form['username']))
-        pass_words = passes.fetchone()
-        if bcrypt.checkpw(request.form['password'], pass_words):
-            status1 = "You have logged in succesfully!"
-        else:
+        try:
+            passes = cursor.execute("SELECT password FROM users WHERE username = ?", (request.form['username'],))
+            pass_words = passes.fetchone()[0]
+            hashed1 = bcrypt.hashpw(request.form['password'].encode("UTF-8"), bcrypt.gensalt())
+            if bcrypt.checkpw(pass_words, hashed1):
+                status1 = "You have logged in succesfully!"
+        except Exception as error:
+            print(error)
             status1 = "Please enter the login info again. A problem occured."
         
     conn.close()
     return render_template('login.html', status1 = status1)
-
-
-'''
-
-[2020-01-18 15:13:44,154] ERROR in app: Exception on /login [POST]
-Traceback (most recent call last):
-  File "/home/adrita/.local/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/adrita/.local/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/adrita/.local/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/adrita/.local/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/adrita/.local/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/adrita/.local/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/adrita/website/app2.py", line 120, in login
-    passes = cursor.execute("SELECT password FROM users WHERE username = ?", (request.form['username']))
-sqlite3.ProgrammingError: Incorrect number of bindings supplied. The current statement uses 1, and there are 2 supplied.
-
-'''
