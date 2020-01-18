@@ -117,7 +117,7 @@ def login():
     global status1
     conn = sqlite3.connect("signup.db")
     cursor = conn.cursor()
-    if request.method == 'POST':
+    if request.method == 'GET':
         status1 = "Please fill in all the feilds"
     else:
         try:
