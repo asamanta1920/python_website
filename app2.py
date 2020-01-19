@@ -123,9 +123,12 @@ def login():
         try:
             passes = cursor.execute("SELECT password FROM users WHERE username = ?", (request.form['username'],))
             pass_words = passes.fetchone()[0]
-            hashed1 = bcrypt.hashpw(request.form['password'].encode("UTF-8"), bcrypt.gensalt())
-            if bcrypt.checkpw(pass_words, hashed1):
+            if bcrypt.checkpw(request.form['password'].encode("UTF-8"),pass_words):
+
                 status1 = "You have logged in succesfully!"
+            else:
+                status1 = "Please enter the login info again. A problem occured."
+
         except Exception as error:
             print(error)
             status1 = "Please enter the login info again. A problem occured."
