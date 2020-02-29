@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+h1{
+    color:rgb(255, 0, 221);
+    background-color:#15c4ff;
+    font-size:25px;
+    width: 220;
+    font-family:'Indie Flower',cursive;
+    text-align: left;
+    border-style: dotted;
+    border-color: #B126EE;
+}
+h2{
+    color:rgb(0, 26, 255);
+    background-color:rgb(130, 230, 49);
+    font-size:25px;
+    width: 220;
+    font-family:'Indie Flower',cursive;
+    text-align: left;
+    border-style: dotted;
+    border-color: #B126EE;
+}
+
+h4{
+    color:rgb(16, 113, 126);
+    background-color:rgb(226, 214, 104);
+    font-size:25px;
+    width: 220;
+    font-family:'Indie Flower',cursive;
+    text-align: left;
+    border-style: solid;
+    border-color: #B126EE;
+}
+h5{
+    color:rgb(16, 113, 126);
+    background-color:rgb(226, 214, 104);
+    font-size:25px;
+    width: 220;
+    font-family:'Indie Flower',cursive;
+    text-align: left;
+    border-style: solid;
+    border-color: #B126EE;
+}
+
+table{
+    color:rgb(255, 0, 0);
+    background-color:rgb(253, 253, 253);
+    font-family:'Indie Flower',cursive;
+    font-size: 70px;
+    width: 220px;
+    height: 200px;
+    text-align: center;
+    border-style: double;
+    border-color: rgb(238, 38, 178);
+}

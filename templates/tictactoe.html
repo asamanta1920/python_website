@@ -1,65 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My Tic Tac Toe Game</title>
-        <style type="text/css">
-            @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
-
-            h1{
-                color:rgb(255, 0, 221);
-                background-color:#15c4ff;
-                font-size:25px;
-                width: 220;
-                font-family:'Indie Flower',cursive;
-                text-align: left;
-                border-style: dotted;
-                border-color: #B126EE;
-            }
-            h2{
-                color:rgb(255, 0, 128);
-                background-color:rgb(130, 230, 49);
-                font-size:25px;
-                width: 220;
-                font-family:'Indie Flower',cursive;
-                text-align: left;
-                border-style: dotted;
-                border-color: #B126EE;
-            }
-
-            h4{
-                color:rgb(16, 113, 126);
-                background-color:rgb(226, 214, 104);
-                font-size:25px;
-                width: 220;
-                font-family:'Indie Flower',cursive;
-                text-align: left;
-                border-style: solid;
-                border-color: #B126EE;
-            }
-            h5{
-                color:rgb(16, 113, 126);
-                background-color:rgb(226, 214, 104);
-                font-size:25px;
-                width: 220;
-                font-family:'Indie Flower',cursive;
-                text-align: left;
-                border-style: solid;
-                border-color: #B126EE;
-            }
-
-            table{
-                color:rgb(255, 0, 0);
-                background-color:rgb(21, 255, 72);
-                font-family:'Indie Flower',cursive;
-                font-size: 70px;
-                width: 220px;
-                height: 200px;
-                text-align: center;
-                border-style: double;
-                border-color: rgb(238, 38, 178);
-            }
-
-        </style>
+        <title>Hello Game!</title>
+        <link rel="stylesheet" type="text/css" href="/static/tictactoe.css">
     </head>
     <body>
         {% if error %}
@@ -78,7 +21,7 @@
         </table>
         <form method="POST">
             <div>
-                <h4>Choose a position : </h4>
+                <h4>Choose a position(0, 9) : </h4>
             </div>
             <input type="number" name="position"/>
             <div>

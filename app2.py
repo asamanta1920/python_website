@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 import sqlite3
 import bcrypt
 app = Flask(__name__)
+
+app.secret_key = b's\x1a\xd3\x13\xac\xef\x1aq\x98Z\xb5%P#\xda\xfa'
 
 conn = sqlite3.connect("signup.db")
 
@@ -20,7 +22,6 @@ CREATE TABLE IF NOT EXISTS users(
 conn.commit()
 conn.close()
 
-@app.route('/')
 @app.route('/hello/<username>')
 
 def hello_world(username = None):
@@ -124,14 +125,33 @@ def login():
             passes = cursor.execute("SELECT password FROM users WHERE username = ?", (request.form['username'],))
             pass_words = passes.fetchone()[0]
             if bcrypt.checkpw(request.form['password'].encode("UTF-8"),pass_words):
-
-                status1 = "You have logged in succesfully!"
+                session['username'] = request.form['username']
+                return redirect(url_for('home'))
             else:
-                status1 = "Please enter the login info again. A problem occured."
+                status1 = "Please enter the login info again. Or sign up for first time user."
 
         except Exception as error:
             print(error)
-            status1 = "Please enter the login info again. A problem occured."
+            status1 = "Please enter the login info again. Or sign up for first time user."
         
     conn.close()
     return render_template('login.html', status1 = status1)
+
+@app.route('/')
+
+def home():
+    if "username" in session:
+        return render_template('home.html', username = session['username'])
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/logout')
+
+def logout():
+    session.pop('username', None)
+    return render_template('exit.html')
+
+@app.route('/js')
+
+def js():
+    return render_template('js.html')
