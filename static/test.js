@@ -28,3 +28,122 @@ $(function() {
         }
     })
 })
+
+let player_turn = 1;
+
+$(function() {
+    $("#zero").on("click", function() { 
+        if (player_turn % 2 === 0) {
+            $(this).text("X");
+            player_turn ++;
+        } else {
+            $(this).text("O");
+            player_turn ++;
+        }
+        // player_turn ++;
+    })
+})
+
+$(function() {
+    $("#one").on("click", function() { 
+        if (player_turn % 2 === 0) {
+            $(this).text("X");
+            player_turn ++;
+        } else {
+            $(this).text("O");
+            player_turn ++;
+        }
+        // player_turn ++;
+    })
+})
+
+$(function() {
+    $("#two").on("click", function() { 
+        if (player_turn % 2 === 0) {
+            $(this).text("X");
+            player_turn ++;
+        } else {
+            $(this).text("O");
+            player_turn ++;
+        }
+        // player_turn ++;
+    })
+})
+
+$(function() {
+    $("#three").on("click", function() { 
+        if (player_turn % 2 === 0) {
+            $(this).text("X");
+            player_turn ++;
+        } else {
+            $(this).text("O");
+            player_turn ++;
+        }
+        // player_turn ++;
+    })
+})
+
+$(function() {
+    $("#four").on("click", function() { 
+        if (player_turn % 2 === 0) {
+            $(this).text("X");
+            player_turn ++;
+        } else {
+            $(this).text("O");
+            player_turn ++;
+        }
+        // player_turn ++;
+    })
+})
+
+$(function() {
+    $("#five").on("click", function() { 
+        if (player_turn % 2 === 0) {
+            $(this).text("X");
+            player_turn ++;
+        } else {
+            $(this).text("O");
+            player_turn ++;
+        }
+        // player_turn ++;
+    })
+})
+
+$(function() {
+    $("#six").on("click", function() { 
+        if (player_turn % 2 === 0) {
+            $(this).text("X");
+            player_turn ++;
+        } else {
+            $(this).text("O");
+            player_turn ++;
+        }
+        // player_turn ++;
+    })
+})
+
+$(function() {
+    $("#seven").on("click", function() { 
+        if (player_turn % 2 === 0) {
+            $(this).text("X");
+            player_turn ++;
+        } else {
+            $(this).text("O");
+            player_turn ++;
+        }
+        // player_turn ++;
+    })
+})
+
+$(function() {
+    $("#eight").on("click", function() { 
+        if (player_turn % 2 === 0) {
+            $(this).text("X");
+            player_turn ++;
+        } else {
+            $(this).text("O");
+            player_turn ++;
+        }
+        // player_turn ++;
+    })
+})
