@@ -53,3 +53,7 @@ table{
     border-style: double;
     border-color: rgb(238, 38, 178);
 }
+
+.game {
+    width: 1em;
+}

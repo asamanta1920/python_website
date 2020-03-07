@@ -4,9 +4,9 @@
         <title>Home Page</title>
         <link rel="stylesheet" type="text/css" href="/static/tictactoe.css">
         <script
-        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
         crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
 
         <script src='/static/test.js'></script>
 
@@ -17,21 +17,27 @@
         </style>
     </head>
     <body>
-        <!-- <button id="hello">Hello</button> -->
-        <button id="zero">_</button>
-        <button id="one">_</button>
-        <button id="two">_</button>
+        <h3 id="winner"></h3>
+
+
+        <button id="0" class="game">_</button>
+        <button id="1" class="game">_</button>
+        <button id="2" class="game">_</button>
 
         <br></br>
 
-        <button id="three">_</button>
-        <button id="four">_</button>
-        <button id="five">_</button>
+        <button id="3" class="game">_</button>
+        <button id="4" class="game">_</button>
+        <button id="5" class="game">_</button>
 
         <br></br>
 
-        <button id="six">_</button>
-        <button id="seven">_</button>
-        <button id="eight">_</button> 
+        <button id="6" class="game">_</button>
+        <button id="7" class="game">_</button>
+        <button id="8" class="game">_</button> 
+
+        <br></br>
+
+        <button id="reload" style= "display: none">Reload</button> 
     </body>
 </html>

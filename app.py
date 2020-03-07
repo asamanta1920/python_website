@@ -1,7 +1,14 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 import sqlite3
 import bcrypt
+from flask_socketio import SocketIO
+
 app = Flask(__name__)
+
+app.secret_key = b's\x1a\xd3\x13\xac\xef\x1aq\x98Z\xb5%P#\xda\xfa'
+
+socketio = SocketIO(app)
+socketio.run(app)
 
 conn = sqlite3.connect("signup.db")
 
@@ -20,7 +27,6 @@ CREATE TABLE IF NOT EXISTS users(
 conn.commit()
 conn.close()
 
-@app.route('/')
 @app.route('/hello/<username>')
 
 def hello_world(username = None):
@@ -89,7 +95,9 @@ def game():
 
 @app.route('/signup', methods=['GET','POST'])
 
+
 def signup():
+    global status
     conn = sqlite3.connect("signup.db")
     cursor = conn.cursor()
     if request.method == 'GET':
@@ -112,29 +120,64 @@ def signup():
 @app.route('/login', methods=['GET','POST'])
 
 def login():
+    global status1
     conn = sqlite3.connect("signup.db")
     cursor = conn.cursor()
     if request.method == 'GET':
         status1 = "Please fill in all the feilds"
     else:
-        hashed1 = bcrypt.hashpw(request.form['password'].encode("UTF-8"), bcrypt.gensalt())
-        num1 = cursor.execute("SELECT username from users")
-        username1 = num1.fetchall()
-        num2 = cursor.execute("SELECT password from users")
-        passwords = num2.fetchall()
-        usernames = []
-        i = len(username1) - 1
-        while i >= 0:
-            usernames.append(username1[i][0])
-            i = i - 1
-        print(usernames)
-        print(request.form['username'], hashed1)
-        if request.form['username'] in usernames:
-            for password in passwords:
-                if bcrypt.checkpw(password, hashed1):
-                    status1 = "You have logged in succesfully!"
-        else:
-            status1 = "Please enter the login info again. A problem occured."
+        try:
+            passes = cursor.execute("SELECT password FROM users WHERE username = ?", (request.form['username'],))
+            pass_words = passes.fetchone()[0]
+            if bcrypt.checkpw(request.form['password'].encode("UTF-8"),pass_words):
+                session['username'] = request.form['username']
+                return redirect(url_for('home'))
+            else:
+                status1 = "Please enter the login info again. Or sign up for first time user."
+
+        except Exception as error:
+            print(error)
+            status1 = "Please enter the login info again. Or sign up for first time user."
         
     conn.close()
     return render_template('login.html', status1 = status1)
+
+@app.route('/')
+def home():
+    if "username" in session:
+        return render_template('home.html', username = session['username'])
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return render_template('exit.html')
+
+@app.route('/js')
+def js():
+    return render_template('js.html')
+
+X = 0
+O = 0
+T = 0
+
+@app.route('/scoreUpload', methods = ['POST'])
+def scoreUpload():
+    global X
+    global O
+    global T
+
+    status = request.form['status']
+    if status == "X":
+        X += 1
+    elif status == "O":
+        O += 1
+    elif status == "T":
+        T += 1
+    else:
+        return "You provided an invalid score", 400
+
+    print(X, O, T)
+
+    return ""
