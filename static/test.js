@@ -41,6 +41,7 @@ $(function() {
             player_turn ++;
         }
         // player_turn ++;
+        $("#zero").prop("disabled", true);
     })
 })
 
@@ -54,6 +55,7 @@ $(function() {
             player_turn ++;
         }
         // player_turn ++;
+        $("#one").prop("disabled", true);
     })
 })
 
@@ -67,6 +69,7 @@ $(function() {
             player_turn ++;
         }
         // player_turn ++;
+        $("#two").prop("disabled", true);
     })
 })
 
@@ -80,6 +83,7 @@ $(function() {
             player_turn ++;
         }
         // player_turn ++;
+        $("#three").prop("disabled", true);
     })
 })
 
@@ -93,6 +97,7 @@ $(function() {
             player_turn ++;
         }
         // player_turn ++;
+        $("#four").prop("disabled", true);
     })
 })
 
@@ -106,6 +111,7 @@ $(function() {
             player_turn ++;
         }
         // player_turn ++;
+        $("#five").prop("disabled", true);
     })
 })
 
@@ -119,6 +125,7 @@ $(function() {
             player_turn ++;
         }
         // player_turn ++;
+        $("#six").prop("disabled", true);
     })
 })
 
@@ -132,6 +139,7 @@ $(function() {
             player_turn ++;
         }
         // player_turn ++;
+        $("#seven").prop("disabled", true);
     })
 })
 
@@ -145,5 +153,6 @@ $(function() {
             player_turn ++;
         }
         // player_turn ++;
+        $("#eight").prop("disabled", true);
     })
 })
